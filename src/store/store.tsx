@@ -5,7 +5,7 @@ import { IStoreState } from "../types/index";
 
 const initialState = {
   maxCharacters: 140,
-  tweets: [
+  tweetsList: [
     {
       author: "dabridginator",
       avatar: "sasha-avatar.png",

@@ -1,6 +1,6 @@
 export interface IStoreState {
   maxCharacters: number;
-  tweets: ITweet[];
+  tweetsList: ITweet[];
 }
 
 export interface ITweet {

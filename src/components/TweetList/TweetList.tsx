@@ -4,14 +4,14 @@ import { IStoreState, ITweet } from "../../types/index";
 import Tweet from "../Tweet/Tweet";
 
 interface IProps {
-  tweets: ITweet[];
+  tweetsList: ITweet[];
 }
 
 class TweetList extends React.Component<IProps, any> {
   public render() {
     return (
       <section className="TweetList">
-        {this.props.tweets.map(tweet => (
+        {this.props.tweetsList.map(tweet => (
           <Tweet key={tweet.id} tweet={tweet} />
         ))}
       </section>
@@ -19,9 +19,9 @@ class TweetList extends React.Component<IProps, any> {
   }
 }
 
-function mapStateToProps({ tweets }: IStoreState) {
+function mapStateToProps({ tweetsList }: IStoreState) {
   return {
-    tweets
+    tweetsList
   };
 }
 
