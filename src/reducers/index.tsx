@@ -24,50 +24,58 @@ function addTweet(state: IStoreState, tweetText: string) {
   // Calculate current max id to get id for new tweet
   const getMaxTweetId: any = (max: number, cur: number) => Math.max(max, cur);
 
-  const maxTweetId = state.tweetsList.map(el => el.id).reduce(getMaxTweetId);
+  const maxTweetId = state.tweets.tweetsList
+    .map(el => el.id)
+    .reduce(getMaxTweetId);
 
   const tweetId = maxTweetId + 1;
-  const updatedTweets = update(state.tweetsList, {
-    $push: [
-      {
-        author: "dabridginator",
-        avatar: "avatar.jpg",
-        id: tweetId,
-        liked: false,
-        retweeted: false,
-        time: "now",
-        tweetText
-      }
-    ]
+  const updatedTweets = update(state.tweets, {
+    tweetsList: {
+      $push: [
+        {
+          author: "dabridginator",
+          avatar: "avatar.jpg",
+          id: tweetId,
+          liked: false,
+          retweeted: false,
+          time: "now",
+          tweetText
+        }
+      ]
+    }
   });
   return Object.assign({}, state, {
-    tweetsList: updatedTweets
+    tweets: updatedTweets
   });
 }
 
 function likeTweet(state: IStoreState, liked: boolean, id: number) {
-  const updatedTweets = update(state.tweetsList, {
-    [id]: {
-      liked: {
-        $apply: (x: boolean) => !x
+  const updatedTweets = update(state.tweets, {
+    tweetsList: {
+      [id]: {
+        liked: {
+          $apply: (x: boolean) => !x
+        }
       }
     }
   });
   return Object.assign({}, state, {
-    tweetsList: updatedTweets
+    tweets: updatedTweets
   });
 }
 
 function retweetTweet(state: IStoreState, liked: boolean, id: number) {
-  const updatedTweets = update(state.tweetsList, {
-    [id]: {
-      retweeted: {
-        $apply: (x: boolean) => !x
+  const updatedTweets = update(state.tweets, {
+    tweetsList: {
+      [id]: {
+        retweeted: {
+          $apply: (x: boolean) => !x
+        }
       }
     }
   });
   return Object.assign({}, state, {
-    tweetsList: updatedTweets
+    tweets: updatedTweets
   });
 }
 

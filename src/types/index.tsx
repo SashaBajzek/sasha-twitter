@@ -1,4 +1,8 @@
 export interface IStoreState {
+  tweets: ITweetsProperties;
+}
+
+export interface ITweetsProperties {
   maxCharacters: number;
   tweetsList: ITweet[];
 }

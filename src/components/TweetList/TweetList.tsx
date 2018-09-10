@@ -19,9 +19,9 @@ class TweetList extends React.Component<IProps, any> {
   }
 }
 
-function mapStateToProps({ tweetsList }: IStoreState) {
+function mapStateToProps({ tweets }: IStoreState) {
   return {
-    tweetsList
+    tweetsList: tweets.tweetsList
   };
 }
 
