@@ -29,7 +29,7 @@ export type SashaTwitterAction =
   | IRetweetTweet
   | ILikeTweet;
 
-export function setTweets(tweetsList: any): ISetTweets {
+export function setTweets(tweetsList: ITweet[]): ISetTweets {
   return {
     tweetsList,
     type: constants.SET_TWEETS
@@ -43,7 +43,7 @@ export function addTweet(tweetText: string): IAddTweet {
   };
 }
 
-export function retweetTweet(id: any, retweeted: boolean): IRetweetTweet {
+export function retweetTweet(id: number, retweeted: boolean): IRetweetTweet {
   return {
     id,
     retweeted,
@@ -51,7 +51,7 @@ export function retweetTweet(id: any, retweeted: boolean): IRetweetTweet {
   };
 }
 
-export function likeTweet(id: any, liked: boolean): ILikeTweet {
+export function likeTweet(id: number, liked: boolean): ILikeTweet {
   return {
     id,
     liked,
