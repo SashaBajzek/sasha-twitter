@@ -1,17 +1,26 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { IStoreState, ITweet } from "../../types/index";
+
+import { IApplicationState } from "../../store/index";
+import { ITweet } from "../../store/tweets";
+
 import Tweet from "../Tweet/Tweet";
 
-interface IProps {
+// Props passed from mapStateToProps
+interface IPropsFromState {
   tweetsList: ITweet[];
 }
 
-class TweetList extends React.Component<IProps, any> {
+// Combine both state + dispatch props - as well as any props we want to pass - in a union type.
+type TweetListContainerProps = IPropsFromState;
+
+class TweetList extends React.Component<TweetListContainerProps> {
   public render() {
+    const { tweetsList } = this.props;
+
     return (
       <section className="TweetList">
-        {this.props.tweetsList.map(tweet => (
+        {tweetsList.map(tweet => (
           <Tweet key={tweet.id} tweet={tweet} />
         ))}
       </section>
@@ -19,11 +28,12 @@ class TweetList extends React.Component<IProps, any> {
   }
 }
 
-function mapStateToProps({ tweets }: IStoreState) {
-  return {
-    tweetsList: tweets.tweetsList
-  };
-}
+// It's usually good practice to only include one context at a time in a connected component.
+// Although if necessary, you can always include multiple contexts. Just make sure to
+// separate them from each other to prevent prop conflicts.
+const mapStateToProps = ({ tweets }: IApplicationState) => ({
+  tweetsList: tweets.tweetsList
+});
 
 export default connect(
   mapStateToProps,

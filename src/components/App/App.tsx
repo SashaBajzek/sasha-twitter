@@ -2,7 +2,7 @@ import * as React from "react";
 import { Provider } from "react-redux";
 import "./App.css";
 
-import store from "../../store/store";
+import store from "../../store/index";
 
 import TweetList from "../TweetList/TweetList";
 
