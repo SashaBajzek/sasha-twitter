@@ -14,8 +14,8 @@ type CharacterCounterProps = IPropsFromState;
 export class CharacterCounter extends React.Component<CharacterCounterProps> {
   public render() {
     return (
-      <div className="tweetbox__counter">
-        Remaining Characters: {this.props.remainingCharacters}
+      <div className="SubmitTweetForm__counter">
+        {this.props.remainingCharacters}
       </div>
     );
   }

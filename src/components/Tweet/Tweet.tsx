@@ -58,21 +58,21 @@ class Tweet extends React.Component<TweetContainerProps & IOtherProps> {
       >
         <a
           href={`http://twitter.com/${tweet.author}`}
-          className="tweet__avatar"
+          className="Tweet__avatar"
         >
           <img src={avatar} alt={tweet.author} />
         </a>
-        <div className="tweet__details">
-          <div className="tweet__metadata">
+        <div className="Tweet__details">
+          <div className="Tweet__metadata">
             <a
               href={`http://twitter.com/${tweet.author}`}
-              className="tweet__author"
+              className="Tweet__author"
             >
               {tweet.author}
             </a>
-            <small className="tweet__time">{tweet.time}</small>
+            <small className="Tweet__time">{tweet.time}</small>
           </div>
-          <p className="tweet__content">{tweet.tweetText}</p>
+          <p className="Tweet__content">{tweet.tweetText}</p>
           <button className="button--retweet" onClick={this.handleRetweetClick}>
             Retweet
           </button>

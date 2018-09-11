@@ -11,7 +11,7 @@ html {
 }
 
 body,
-.tweetbox__field,
+.SubmitTweetForm__field,
 input {
   color: midnightblue;
   font-family: Helvetica, Arial, sans-serif;
@@ -26,18 +26,17 @@ body {
   position: relative;
 }
 
-.tweetbox {
+.SubmitTweetForm {
   background: #f5f5f5;
   background-color: gold;
   border-radius: 6px;
-  height: 89px;
   margin: 10px auto;
   padding: 10px;
   top: 0;
   z-index: 2;
 }
 
-.tweetbox__field {
+.SubmitTweetForm__field {
   border-radius: 4px;
   border: 1px solid lightsteelblue;
   color: navy;
@@ -65,18 +64,18 @@ body {
   color: steelblue;
 }
 
-.tweetbox__actions {
+.SubmitTweetForm__actions {
   display: flex;
   justify-content: flex-end;
 }
 
-.tweetbox__counter {
+.SubmitTweetForm__counter {
   color: midnightblue;
   line-height: 22px;
   margin-right: 5px;
 }
 
-.tweetbox__button {
+.SubmitTweetForm__button {
   align-items: flex-start;
   background-color: white;
   border: 1px solid lightsteelblue;
@@ -91,23 +90,28 @@ body {
   width: 60px;
 }
 
-.tweetbox__button:hover {
+.SubmitTweetForm__button:hover {
   background: lightyellow;
   border-width: 2px;
 }
 
-.tweetbox__button:disabled {
-  background-color: red;
+.SubmitTweetForm__button:disabled {
+  background-color: buttonface;
   color: steelblue;
 }
 
-.tweetbox__button:disabled:hover {
+.SubmitTweetForm__button:disabled:hover {
   border-color: red;
   cursor: not-allowed;
 }
 
+.SubmitTweetForm__label {
+  display: none;
+}
+
 .TweetList {
   background: white;
+  background-image: url("./sunburst.svg");
   border: 1px solid lightsteelblue;
   border-top: none;
   max-height: calc(100vh - 119px);
@@ -126,37 +130,37 @@ body {
   z-index: 1;
 }
 
-.tweet__avatar {
+.Tweet__avatar {
   margin-right: 10px;
   width: 48px;
 }
 
-.tweet__avatar img {
+.Tweet__avatar img {
   border: 1px solid steelblue;
   display: block;
   height: 50px;
   width: 50px;
 }
 
-.tweet__details {
+.Tweet__details {
   flex-grow: 1;
 }
 
-.tweet__metadata {
+.Tweet__metadata {
   display: flex;
   justify-content: space-between;
 }
 
-.tweet__content {
+.Tweet__content {
   line-height: 18px;
   margin: 5px 0 0;
 }
 
-.tweet__time {
+.Tweet__time {
   color: steelblue;
 }
 
-.tweet__author {
+.Tweet__author {
   text-decoration: none;
   font-weight: bold;
   color: midnightblue;
@@ -178,7 +182,7 @@ body {
 }
 
 .button--retweet:hover,
-.button--like:hover {
+.buttton--like:hover {
   background: lightyellow;
   border-width: 2px;
 }
@@ -199,7 +203,7 @@ body {
     width: 320px;
   }
 
-  .tweetbox__field {
+  .SubmitTweetForm__field {
     margin: 0 auto;
     width: 300px;
   }

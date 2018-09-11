@@ -20,8 +20,6 @@ type AppContainerProps = IPropsFromDispatch;
 
 class App extends React.Component<AppContainerProps> {
   public handleTweetSubmit = (values: any) => {
-    // tslint:disable-next-line:no-console
-    console.log("submit values", values);
     this.props.addTweet(values.tweetText);
     this.props.resetForm();
   };
