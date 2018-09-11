@@ -5,13 +5,14 @@ import {
   createStore,
   Dispatch
 } from "redux";
-
+import { reducer as formReducer } from "redux-form";
 import { counterReducer, ICounterState } from "./counter";
 import { ITweetsState, tweetsReducer } from "./tweets";
 
 // The top-level state object
 export interface IApplicationState {
   counter: ICounterState;
+  form: any;
   tweets: ITweetsState;
 }
 
@@ -25,6 +26,7 @@ export interface IConnectedReduxProps<A extends Action = AnyAction> {
 // the reducer acts on the corresponding ApplicationState property type.
 export const rootReducer = combineReducers<IApplicationState>({
   counter: counterReducer,
+  form: formReducer,
   tweets: tweetsReducer
 });
 
