@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { reset } from "redux-form";
 import "./App.css";
 
 import { IApplicationState } from "../../store/index";
@@ -20,14 +21,18 @@ interface IPropsFromState {
 // Props passed from mapDispatchToProps
 interface IPropsFromDispatch {
   addTweet: typeof tweetsActions.addTweet;
+  resetForm: any;
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
 type AppContainerProps = IPropsFromState & IPropsFromDispatch;
 
 class App extends React.Component<AppContainerProps> {
-  public handleTweetSubmit = () => {
-    this.props.addTweet("Hello World Tweet");
+  public handleTweetSubmit = (values: any) => {
+    // tslint:disable-next-line:no-console
+    console.log("submit values", values);
+    this.props.addTweet(values.newTweetText);
+    this.props.resetForm();
   };
 
   public render() {
@@ -35,7 +40,6 @@ class App extends React.Component<AppContainerProps> {
       <div className="App">
         <h1>BeachTwitter</h1>
         <SubmitTweetForm
-          customText="Hello World"
           maxCharacters={this.props.maxCharacters}
           onSubmit={this.handleTweetSubmit}
         />
@@ -54,7 +58,8 @@ const mapStateToProps = ({ counter }: IApplicationState) => ({
 
 // Mapping our action dispatcher to props is especially useful when creating container components.
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  addTweet: (tweetText: string) => dispatch(tweetsActions.addTweet(tweetText))
+  addTweet: (tweetText: string) => dispatch(tweetsActions.addTweet(tweetText)),
+  resetForm: () => dispatch(reset("createTweetForm"))
 });
 
 export default connect(

@@ -1,10 +1,9 @@
 import * as React from "react";
-import { InjectedFormProps, reduxForm } from "redux-form";
+import { Field, InjectedFormProps, reduxForm } from "redux-form";
 
 import { IMaxCharacters } from "../../store/counter";
 
 interface ICustomProps {
-  customText: string;
   maxCharacters: IMaxCharacters;
 }
 
@@ -12,13 +11,15 @@ class FormComponent extends React.Component<
   ICustomProps & InjectedFormProps<{}, ICustomProps>
 > {
   public render() {
-    const { handleSubmit, customText, maxCharacters } = this.props;
+    const { handleSubmit, maxCharacters } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
         <div>
-          <p>{customText}</p>
+          <label htmlFor="newTweetText">Input new tweet:</label>
+          <Field name="newTweetText" component="textarea" type="text" />
         </div>
+
         <p>Max Characters: {maxCharacters}</p>
         <button type="submit">Submit Tweet</button>
       </form>
@@ -27,7 +28,7 @@ class FormComponent extends React.Component<
 }
 
 const SubmitTweetForm = reduxForm<{}, ICustomProps>({
-  form: "form"
+  form: "createTweetForm" // a unique name for the form
 })(FormComponent);
 
 export default SubmitTweetForm;
