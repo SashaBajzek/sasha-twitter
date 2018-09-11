@@ -16,6 +16,7 @@ class FormComponent extends React.Component<
         <div>
           <p>{customText}</p>
         </div>
+        <button type="submit">Submit Tweet</button>
       </form>
     );
   }
