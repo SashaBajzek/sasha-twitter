@@ -17,6 +17,14 @@ const validate = (values: any) => {
   return errors;
 };
 
+const renderField = (field: any) => (
+  <div className="input-row">
+    <textarea {...field.input} type="text" />
+    {field.meta.touched &&
+      field.meta.error && <span className="error">{field.meta.error}</span>}
+  </div>
+);
+
 class FormComponent extends React.Component<
   ICustomProps & InjectedFormProps<{}, ICustomProps>
 > {
@@ -27,7 +35,7 @@ class FormComponent extends React.Component<
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="tweetText">Input new tweet:</label>
-          <Field name="tweetText" component="textarea" type="text" />
+          <Field name="tweetText" component={renderField} />
         </div>
         <CharacterCounter />
         <button type="submit" disabled={!valid}>
