@@ -1,4 +1,5 @@
 import * as React from "react";
+import FlipMove from 'react-flip-move';
 import { connect } from "react-redux";
 
 import { IApplicationState } from "../../store/index";
@@ -20,9 +21,11 @@ class TweetList extends React.Component<TweetListContainerProps> {
 
     return (
       <section className="TweetList">
-        {tweetsList.map(tweet => (
+        <FlipMove staggerDelayBy={40} staggerDurationBy={40}>
+          {tweetsList.map(tweet => (
           <Tweet key={tweet.id} tweet={tweet} />
-        ))}
+          ))}
+        </FlipMove>
       </section>
     );
   }

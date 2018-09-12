@@ -9,11 +9,11 @@ const initialState: ITweetsState = {
     {
       author: "dabridginator",
       avatar: "sasha-avatar.png",
-      id: 0,
+      id: 2,
       liked: false,
       retweeted: false,
-      time: "3h",
-      tweetText: "Going to the beach today?"
+      time: "1h",
+      tweetText: "Stinson Beach is nice."
     },
     {
       author: "dabridginator",
@@ -27,11 +27,11 @@ const initialState: ITweetsState = {
     {
       author: "dabridginator",
       avatar: "sasha-avatar.png",
-      id: 2,
+      id: 0,
       liked: false,
       retweeted: false,
-      time: "1h",
-      tweetText: "Stinson Beach is nice."
+      time: "3h",
+      tweetText: "Going to the beach today?"
     }
   ]
 };
@@ -44,7 +44,7 @@ function addTweet(state: ITweetsState, tweetText: string) {
 
   const tweetId = maxTweetId + 1;
   const updatedTweets = update(state.tweetsList, {
-    $push: [
+    $unshift: [
       {
         author: "dabridginator",
         avatar: "avatar.jpg",
