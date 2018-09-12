@@ -9,7 +9,7 @@ const initialState: ITweetsState = {
     {
       author: "dabridginator",
       avatar: "sasha-avatar.png",
-      id: 2,
+      id: 102,
       liked: false,
       retweeted: false,
       time: "1h",
@@ -18,7 +18,7 @@ const initialState: ITweetsState = {
     {
       author: "dabridginator",
       avatar: "sasha-avatar.png",
-      id: 1,
+      id: 101,
       liked: false,
       retweeted: false,
       time: "2h",
@@ -27,7 +27,7 @@ const initialState: ITweetsState = {
     {
       author: "dabridginator",
       avatar: "sasha-avatar.png",
-      id: 0,
+      id: 100,
       liked: false,
       retweeted: false,
       time: "3h",
@@ -47,7 +47,7 @@ function addTweet(state: ITweetsState, tweetText: string) {
     $unshift: [
       {
         author: "dabridginator",
-        avatar: "avatar.jpg",
+        avatar: "sasha-avatar.png",
         id: tweetId,
         liked: false,
         retweeted: false,
@@ -62,8 +62,9 @@ function addTweet(state: ITweetsState, tweetText: string) {
 }
 
 function likeTweet(state: ITweetsState, id: number) {
+  const indexOfTweet = state.tweetsList.map(e => e.id).indexOf(id);
   const updatedTweets = update(state.tweetsList, {
-    [id]: {
+    [indexOfTweet]: {
       liked: {
         $apply: (x: boolean) => !x
       }
@@ -75,8 +76,9 @@ function likeTweet(state: ITweetsState, id: number) {
 }
 
 function retweetTweet(state: ITweetsState, id: number) {
+  const indexOfTweet = state.tweetsList.map(e => e.id).indexOf(id);
   const updatedTweets = update(state.tweetsList, {
-    [id]: {
+    [indexOfTweet]: {
       retweeted: {
         $apply: (x: boolean) => !x
       }
